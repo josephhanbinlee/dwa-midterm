@@ -1,38 +1,97 @@
-.App {
-  text-align: center;
+body {
+  background-color: #e3ffea;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+div {
+  padding: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Chart {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.ContentWrapper {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.CountryNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  
+}
+
+.CountryNav a {
+  border-bottom: 1px solid transparent;
+  display: block;
+  padding: 5px 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+  transition: border-bottom 200ms ease;
+  
+}
+
+.CountryNav a:hover {
+  border-bottom: 1px solid black;
+}
+
+.Introduction {
+  padding: 0px 200px;
+}
+
+.Introduction h1 {
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.Introduction h3 {
+  color: darkslategray;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.MapSize img{
+  display: block;
+  max-height: 175px;
+  padding: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+span {
+  text-decoration-line: underline;
+  text-decoration-color: darkslategray;
+}
+
+.SpeciesList {
+  flex-basis: 50%;
+}
+
+.Listing a {
+  color: darkslategray;
+  text-decoration: none;
+  padding: 5px;
+  border: 1px solid darkgrey;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.Listing a:hover {
+  background-color: #79a67c;
   color: white;
+
 }
 
-.App-link {
-  color: #61dafb;
+.NarWrapper {
+  flex-basis: 50%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
