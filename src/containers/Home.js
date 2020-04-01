@@ -8,23 +8,12 @@ import DATA from "../components/Data";
 
 function Home() {
 
+    let history = useHistory();
+
     // access the URL to get the country
     const[myCountry, setCountry] = useState('DO');
 
-    let history = useHistory();
-
-    useEffect(() => {
-        let searchParams = history.location.search;
-        let urlParams = new URLSearchParams(searchParams);
-        let myCountry = urlParams.get("country")
-
-        if (urlParams.has("country")) {
-            urlParams.set("country", `${myCountry}`)
-            setCountry(myCountry);
-        }
-
-    }, [history]);
-
+    // Axios
     useEffect(() => {
         axios
             .get(`${myCountry}`)
@@ -37,6 +26,19 @@ function Home() {
 
     }, [myCountry]);
 
+    // update Country in URL
+    useEffect(() => {
+        let searchParams = history.location.search;
+        let urlParams = new URLSearchParams(searchParams);
+        let myCountry = urlParams.get("country")
+
+        if (urlParams.has("country")) {
+            urlParams.set("country", `${myCountry}`)
+            setCountry(myCountry);
+        }
+
+    }, [history]);
+
 
     // getting the arrays to access the data
     const dataArray = DATA.filter(item => item.myCode === myCountry)
@@ -48,10 +50,11 @@ function Home() {
 
     /* ---- ---- */
 
-    // const species = speciesArray[0];
+
     const[species, setSpecies] = useState(speciesArray[0]);
     console.log("what is the species 1", speciesArray[0]);
 
+    // update species in URL
     useEffect(() => {
         let searchParams2 = history.location.search;
         let urlParams2 = new URLSearchParams(searchParams2);
@@ -89,12 +92,13 @@ function Home() {
                         <div class="MapSize"> 
                             <img src={countryMap} />
                         </div>
+                        <h3> List of Endangered Species: </h3>
                         {speciesArray.map(item => <p> <a href = {`/?country=${myCountry}&species=${item}`}> {item} </a> </p>)}
                     </div>
                             
                 </div>
                 <div className="NarWrapper">
-                    <iframe width="720px" height="650px" src={`https://en.wikipedia.org/wiki/Special:Search?search=${species}`}> </iframe>
+                    <iframe width="100%" height="100%" src={`https://en.wikipedia.org/wiki/Special:Search?search=${species}`}> </iframe>
                     
                 </div>
             </div>
